@@ -29,7 +29,7 @@ Then, change to relative url
     
 ## Intro 
     
-The starter project come with minimal SPA, but using hash for routing.     
+The starter project come with minimal SPA, but using hash for routing. Change to HTML5 routing by setting `<base href="/">` in index.html file as describe in [doc](https://angular.io/docs/ts/latest/guide/router.html#!#browser-url-styles), but does not work :-(.     
     
 ## Gitbub Service
     
