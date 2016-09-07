@@ -19,6 +19,14 @@ For development
 
     npm run server:dev:hmr
     
+Production build
+    
+    npm run build:prod
+    
+Then, change to relative url
+    
+    sed -i -e  's/href="\//href="/g' dist/index.html
+    
 ## Intro 
     
 The starter project come with minimal SPA, but using hash for routing.     
