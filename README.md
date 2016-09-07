@@ -2,6 +2,8 @@
 
 This is a test project.
 
+See [final app](https://yathit.github.io/github-viewer/dist/index.html).
+
 ## Setup
 
 This is a AngularJS 2 application using [Angular2 Webpack Starter](https://github.com/AngularClass/angular2-webpack-starter). 
@@ -12,6 +14,10 @@ See there for detail, briefly
 
     npm install
     npm start
+    
+For development
+
+    npm run server:dev:hmr
     
 ## Intro 
     
@@ -27,7 +33,7 @@ Main implementation is `GithubService`, which provides data from given github us
 
 ## Repo Component
 
-`Repo` component show project detail. 
+`Repo` component show project detail with Readme content.
    
     
 

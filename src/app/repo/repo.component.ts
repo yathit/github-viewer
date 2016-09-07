@@ -33,7 +33,7 @@ export class Repo {
   renderDetail() {
     this.githubService.readme(this.name).then((md) => {
       this.readme = md;
-      this.content = atob(md.content || '');
+      this.content = atob(md['content'] || '');
     })
   }
 

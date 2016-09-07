@@ -19,7 +19,7 @@ export class GithubService {
 
   private request(path: string): Promise<Object> {
     let url = 'https://api.github.com/' + path;
-    return fetch(url).then(function(resp) {
+    return window['fetch'](url).then(function(resp) { // ???: HTML5 fetch is not recognized by TS
       return resp.json();
     });
   }
