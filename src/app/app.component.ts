@@ -4,6 +4,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
+import {GithubService} from "./github.service";
 
 /*
  * App Component
@@ -15,23 +16,18 @@ import { AppState } from './app.service';
   styleUrls: [
     './app.style.css'
   ],
+  providers: [GithubService],
   template: `
     <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
-          Index
-        </a>
-      </span>
-      |
       <span>
         <a [routerLink]=" ['./home'] ">
           Home
         </a>
       </span>
-      |
+         |
       <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
+        <a [routerLink]=" ['./repos'] ">
+          Projects
         </a>
       </span>
       |
@@ -46,15 +42,9 @@ import { AppState } from './app.service';
       <router-outlet></router-outlet>
     </main>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
-
     <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
+      <p>2016 &copy; Kyaw Tun</p>
+      
     </footer>
   `
 })
@@ -64,12 +54,12 @@ export class App {
   url = 'https://twitter.com/AngularClass';
 
   constructor(
-    public appState: AppState) {
+    public appState: GithubService) {
 
   }
 
   ngOnInit() {
-    console.log('Initial App State', this.appState.state);
+    console.log('Initial App State', this.appState.getUsername());
   }
 
 }

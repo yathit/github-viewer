@@ -1,44 +1,50 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GithubService} from "../github.service";
 /*
  * We're loading this component asynchronously
  * We are using some magic with es6-promise-loader that will wrap the module with a Promise
  * see https://github.com/gdi2290/es6-promise-loader for more info
  */
 
-console.log('`About` component loaded asynchronously');
+console.log('`Repos` component loaded asynchronously');
 
 @Component({
-  selector: 'about',
+  selector: 'repos',
   styles: [`
   `],
   template: `
-    <h1>About</h1>
-    <div>
-      Github project viewer test application.
-
-    </div>
-    <div>
-     
-    </div>
-
+    <h1>Projects</h1>
+    
+    <ul>
+      <li *ngFor='let repo of repos'>
+        <a routerLink="/repo/{{ repo.name }}">{{ repo.name }}</a>
+      </li>
+    </ul>
+ 
   `
 })
-export class About {
+export class Repos {
   localState: any;
-  constructor(public route: ActivatedRoute) {
+  repos: Array<Object>;
+  constructor(private router: Router, public githubService: GithubService) {
 
   }
 
   ngOnInit() {
-    this.route
-      .data
-      .subscribe((data: any) => {
-        // your resolved data from route
-        this.localState = data.yourData;
-      });
 
-    console.log('hello `About` component');
+    if (!this.githubService.getUsername()) {
+      this.router.navigate(['/home']);
+      return;
+    }
+
+    this.githubService.listProjects().then((function(repos) {
+      console.log(repos);
+      this.repos = repos;
+
+    }).bind(this));
+
+    console.log('hello `Repos` component');
     // static data that is bundled
     // var mockData = require('assets/mock-data/mock-data.json');
     // console.log('mockData', mockData);

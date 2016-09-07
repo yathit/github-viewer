@@ -18,6 +18,8 @@ import { Home } from './home';
 import { About } from './about';
 import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
+import {Repo} from "./repo/repo.component";
+import {Repos} from "./repos/repos.component";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -38,6 +40,8 @@ type StoreType = {
   declarations: [
     App,
     About,
+    Repo,
+    Repos,
     Home,
     NoContent,
     XLarge
